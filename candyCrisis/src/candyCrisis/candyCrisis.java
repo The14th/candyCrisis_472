@@ -9,7 +9,25 @@ public class candyCrisis {
 
 	char board[][] = new char[3][5];
 	Scanner k = new Scanner(System.in);
+	final long startTime = System.currentTimeMillis();
+	PrintWriter pw;
 
+	public candyCrisis(){
+		try {
+			File file = new File("myfile.txt");
+
+			FileWriter fw = new FileWriter(file, true);
+			BufferedWriter bw = new BufferedWriter(fw);
+			pw = new PrintWriter(bw);
+		} 
+		
+		catch (IOException e) {
+			System.out.println("Exception occurred:");
+			e.printStackTrace();
+		}
+		
+	}
+	
 	//Pick a level
 	public void levelChoice() {
 		
@@ -80,6 +98,7 @@ public class candyCrisis {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
+		final long startTime = System.currentTimeMillis();
 		System.out.println("-------------------------------");
 
 	}
@@ -87,13 +106,13 @@ public class candyCrisis {
 	// Save the sequence to a text file. Does not rewrite the file
 	public int saveSeq(int fromR, int fromC) {
 
-		try {
+	/*	try {
 			File file = new File("myfile.txt");
 
 			FileWriter fw = new FileWriter(file, true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
-
+*/
 			int a = Integer.parseInt(fromR + "" + fromC);
 
 			// Probably an easier way to do this but I just thought of this so
@@ -146,12 +165,12 @@ public class candyCrisis {
 			}
 
 			// pw.print(fromR+ " " + fromC);
-			pw.close();
-
+			//pw.close();
+			/*
 		} catch (IOException e) {
 			System.out.println("Exception occurred:");
 			e.printStackTrace();
-		}
+		}*/
 		return 0;
 	}
 	
@@ -254,6 +273,10 @@ public class candyCrisis {
 			if(board[0][0] == board[2][0] && board[0][1] == board[2][1] && board[0][2] == board[2][2] && board[0][3] == board[2][3] && board[0][4] == board[2][1] ) {
 				System.out.println("Game Completed");
 				//insert time here
+				final long endTime = System.currentTimeMillis();
+				pw.println();
+				pw.println("Time: "+ (endTime - startTime));
+				pw.close();
 				System.exit(0);
 				
 			}
