@@ -205,12 +205,28 @@ public class candyCrisis {
 
 		// NEED TO FIX, can move diagonally
 		while (!canMove) {
+			
 			if (board[toR][toC] != ' ') {
 				System.out.println("Enter valid move: ");
 				toR = k.nextInt();
 				toC = k.nextInt();
-			} else
+			} /*else {
 				canMove = true;
+			}*/
+
+		else if (toR == fromR + 1 && toC == fromC + 1 || toR == fromR - 1 && toC == fromC - 1 ||
+				toR == fromR - 1 && toC == fromC + 1 || toR == fromR + 1 && toC == fromC - 1	) {
+				
+				System.out.println("Cannot move diagonal");
+				System.out.println("Enter valid move: ");
+				fromR = k.nextInt();
+				fromC = k.nextInt();
+				toR = k.nextInt();
+				toC = k.nextInt();
+
+			} else {
+				canMove = true;
+			}
 		}
 
 		char current = board[fromR][fromC];
