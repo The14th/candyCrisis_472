@@ -1,0 +1,18 @@
+F
+Time: 4131
+No of moves: 1
+I
+Time: 8538
+No of moves: 1
+F
+Time: 6294
+No of moves: 1
+I
+Time: 11705
+No of moves: 1
+F
+Time: 1518063842520
+No of moves: 1
+I
+Time: 1518063845208
+No of moves: 1

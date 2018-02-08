@@ -5,28 +5,23 @@ import java.io.*;
 
 public class candyDriver {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Candy Crisis v1.0");
 		System.out.println("-----------------");
 		candyCrisis n = new candyCrisis();
-	
-		n.levelChoice();
+
+		n.loadToBoard(n.levelChoice());
 		n.printBoard();
-		
-		while(!n.gameOver(0)){
-			try {
+
+		while (!n.gameOver(0)) {
+			
 				n.makeMove();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			
+
+				
 			}
 		}
-		
-		
-		
-	}
-	
-	
-	
 
-}
+	}
+
+
