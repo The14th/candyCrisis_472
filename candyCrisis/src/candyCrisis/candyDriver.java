@@ -7,7 +7,7 @@ public class candyDriver {
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("Candy Crisis v1.0");
-		System.out.println("-----------------");
+		System.out.println("------------------");
 		candyCrisis n = new candyCrisis();
 
 		n.loadToBoard(n.levelChoice());

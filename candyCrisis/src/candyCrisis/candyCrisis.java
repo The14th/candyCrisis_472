@@ -311,7 +311,7 @@ public class candyCrisis {
 				final long endTime = System.currentTimeMillis();
 				pw.println();
 				pw.println("Time: " + (endTime - startTime));
-				pw.println("No of moves: " + counter);
+				pw.println("Number of moves: " + counter);
 				counter = 0;
 
 				if (b.readLine() != null) {
