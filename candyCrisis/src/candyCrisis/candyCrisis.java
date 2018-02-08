@@ -78,32 +78,11 @@ public class candyCrisis {
 			}
 
 		}
-/*
-		
-			fis = new FileInputStream(fileName);
-			char current;
 
-			for (int row = 0; row < 3; row++) {
-				for (int col = 0; col < 5; col++) {
-
-					current = (char) fis.read();
-
-					board[row][col] = current;
-					if (board[row][col] == 'e') {
-						board[row][col] = ' ';
-
-					}
-
-				}
-
-			}
-		}
-*/	
 		String line = null;
 		try {
 			b = new BufferedReader(new FileReader(fileName));
 
-			//String line = null;
 			line = b.readLine();
 
 			System.out.println(line);
@@ -131,11 +110,11 @@ public class candyCrisis {
 			e.printStackTrace();
 		}
 		
-		return line;
-		/*
+		
+		
 		System.out.println("Total puzzles: ");
 		System.out.println("-------------------------------");
-		*/
+		return line;
 
 	}
 
@@ -332,20 +311,6 @@ public class candyCrisis {
 			}
 		}
 
-		/*
-		 * // need to read nextLine here
-		 * 
-		 * 
-		 * // condition when top row matches bot row if (cond == 2) { if
-		 * (board[0][0] == board[2][0] && board[0][1] == board[2][1] &&
-		 * board[0][2] == board[2][2] && board[0][3] == board[2][3] &&
-		 * board[0][4] == board[2][1]) { System.out.println("Game Completed");
-		 * final long endTime = System.currentTimeMillis(); pw.println();
-		 * pw.println("Time: " + (endTime - startTime));
-		 * pw.println("No of moves: " + counter); pw.close(); System.exit(0);
-		 * 
-		 * } }
-		 */
 		return false;
 	}
 
