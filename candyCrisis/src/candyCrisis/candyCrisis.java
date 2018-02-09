@@ -10,7 +10,7 @@ public class candyCrisis {
 	char board[][] = new char[3][5];
 	Scanner k = new Scanner(System.in);
 	long startTime = System.currentTimeMillis();
-	
+
 	PrintWriter pw;
 	FileInputStream fis;
 	BufferedReader b;
@@ -82,12 +82,25 @@ public class candyCrisis {
 		String line = null;
 		try {
 			b = new BufferedReader(new FileReader(fileName));
-
 			line = b.readLine();
 
-			System.out.println(line);
 			
-			/*int i = 0;
+		}
+
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("Total puzzles: ");
+		System.out.println("-------------------------------");
+		return line;
+
+	}
+
+	public boolean loadToBoard(String line) {
+
+		int i = 0;
+		if (line != null) {
 			for (int row = 0; row < 3; row++) {
 				for (int col = 0; col < 5; col++) {
 
@@ -102,41 +115,10 @@ public class candyCrisis {
 
 				}
 
-			}*/
-		}
-		 
-
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		System.out.println("Total puzzles: ");
-		System.out.println("-------------------------------");
-		return line;
-
-	}
-
-	
-	public void loadToBoard(String line){
-		
-		int i=0;
-		for (int row = 0; row < 3; row++) {
-			for (int col = 0; col < 5; col++) {
-
-				char current = line.charAt(i);
-
-				board[row][col] = current;
-				i++;
-				if (board[row][col] == 'e') {
-					board[row][col] = ' ';
-
-				}
-
 			}
-
-		}
+			return true;
+		} else
+			return false;
 	}
 
 	// Save the sequence to a text file. Does not rewrite the file
@@ -234,13 +216,26 @@ public class candyCrisis {
 	// Move as you were moving on array
 	// Want to move to 00 from 01 need to type in 0 enter 1 enter 0 enter 0
 	public void makeMove() throws IOException {
+		int fromR;
+		int fromC;
+		int toR;
+		int toC;
 
-		int fromR = k.nextInt();
-		int fromC = k.nextInt();
+		boolean move = false;
+		do {
+			System.out.println("Enter number:");
+			while (!k.hasNextInt()) {
+				String input = k.next();
+				System.out.println(input + " not a number");
+				System.out.println("Enter number:");
 
-		int toR = k.nextInt();
-		int toC = k.nextInt();
-
+			}
+			fromR = k.nextInt();
+			fromC = k.nextInt();
+			toR = k.nextInt();
+			toC = k.nextInt();
+			move = true;
+		} while (!move);
 		boolean canMove = false;
 
 		while (!canMove) {
@@ -277,38 +272,36 @@ public class candyCrisis {
 		printBoard();
 		counter++;
 
-		gameOver(1);
+		gameOver();
 	}
 
-	public boolean gameOver(int cond) throws IOException {
+	public boolean gameOver() throws IOException {
 
-		if (cond == 1) {
-			
-			if (board[0][0] == board[2][0] && board[0][1] == board[2][1] && board[0][2] == board[2][2]
-					&& board[0][3] == board[2][3] && board[0][4] == board[2][1]) {
-				
-				final long endTime = System.currentTimeMillis();
-				pw.println();
-				pw.println("Time: " + (endTime - startTime));
-				pw.println("Number of moves: " + counter);
-				counter = 0;
+		if (board[0][0] == board[2][0] && board[0][1] == board[2][1] && board[0][2] == board[2][2]
+				&& board[0][3] == board[2][3] && board[0][4] == board[2][1]) {
 
-				if (b.readLine() != null) {
-					System.out.println("Next Puzzle");
-					loadToBoard(b.readLine());
-					printBoard();
-					makeMove();
-					
-					// restart loop with next line
-				} else {
-					System.out.println("Game Completed");
-					pw.close();
-					System.exit(0);
-				}
-				
-				
+			final long endTime = System.currentTimeMillis();
+			pw.println();
+			pw.println("Time: " + (endTime - startTime));
+			pw.println("Number of moves: " + counter);
+			counter = 0;
 
+			if (loadToBoard(b.readLine())) {
+
+				// loadToBoard(b.readLine());
+				// System.out.println("Next puzzle is: " +b.readLine());
+				printBoard();
+				makeMove();
+
+				// restart loop with next line
 			}
+
+			else {
+				System.out.println("Game Completed");
+				pw.close();
+				System.exit(0);
+			}
+
 		}
 
 		return false;

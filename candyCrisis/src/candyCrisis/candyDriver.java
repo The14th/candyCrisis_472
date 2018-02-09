@@ -13,7 +13,7 @@ public class candyDriver {
 		n.loadToBoard(n.levelChoice());
 		n.printBoard();
 
-		while (!n.gameOver(0)) {
+		while (!n.gameOver()) {
 			
 				n.makeMove();
 			
