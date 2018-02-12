@@ -1,21 +1,6 @@
 F
-Time: 12511
+Time: 12114
 Number of moves: 1
-I
-Time: 40089
-Number of moves: 1
-F
-Time: 6437
-Number of moves: 1
-F
-Time: 4420
-Number of moves: 1
-F
-Time: 4439
-Number of moves: 1
-I
-Time: 7844
-Number of moves: 1
-I
-Time: 10527
-Number of moves: 1
+JIHGF
+Time: 22411
+Number of moves: 5

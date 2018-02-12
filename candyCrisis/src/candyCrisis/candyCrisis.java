@@ -14,6 +14,11 @@ public class candyCrisis {
 	PrintWriter pw;
 	FileInputStream fis;
 	BufferedReader b;
+	
+	int fromR;
+	int fromC;
+	int toR;
+	int toC;
 
 	private int counter = 0;
 
@@ -91,7 +96,7 @@ public class candyCrisis {
 			e.printStackTrace();
 		}
 
-		System.out.println("Total puzzles: ");
+		
 		System.out.println("-------------------------------");
 		return line;
 
@@ -126,8 +131,7 @@ public class candyCrisis {
 
 		int a = Integer.parseInt(fromR + "" + fromC);
 
-		// Probably an easier way to do this but I just thought of this so
-		// far
+		// Probably an easier way to do this but I just thought of this so far
 		if (a == 00) {
 			pw.print("A");
 		}
@@ -188,7 +192,7 @@ public class candyCrisis {
 		// A B C D E
 		// F G H I J
 		// K L M N O
-
+		System.out.println("--------------------");
 		System.out.println("  0 1 2 3 4");
 		for (int i = 0; i < 3; i++) {
 
@@ -211,16 +215,9 @@ public class candyCrisis {
 		System.out.println("--------------------");
 
 	}
-
-	// Method to move along the board
-	// Move as you were moving on array
-	// Want to move to 00 from 01 need to type in 0 enter 1 enter 0 enter 0
-	public void makeMove() throws IOException {
-		int fromR;
-		int fromC;
-		int toR;
-		int toC;
-
+	
+	public void userInput(){
+		
 		boolean move = false;
 		do {
 			System.out.println("Enter number:");
@@ -236,6 +233,14 @@ public class candyCrisis {
 			toC = k.nextInt();
 			move = true;
 		} while (!move);
+	}
+
+	// Method to move along the board
+	// Move as you were moving on array
+	// Want to move to 00 from 01 need to type in 0 enter 1 enter 0 enter 0
+	public void makeMove() throws IOException {
+		
+		userInput();
 		boolean canMove = false;
 
 		while (!canMove) {
@@ -243,10 +248,8 @@ public class candyCrisis {
 			// wont move if bad move
 			if (board[toR][toC] != ' ') {
 				System.out.println("Enter valid move: ");
-				fromR = k.nextInt();
-				fromC = k.nextInt();
-				toR = k.nextInt();
-				toC = k.nextInt();
+				userInput();
+				
 			}
 			// detects diagonal
 			else if (toR == fromR + 1 && toC == fromC + 1 || toR == fromR - 1 && toC == fromC - 1
@@ -254,12 +257,18 @@ public class candyCrisis {
 
 				System.out.println("Cannot move diagonal");
 				System.out.println("Enter valid move: ");
-				fromR = k.nextInt();
-				fromC = k.nextInt();
-				toR = k.nextInt();
-				toC = k.nextInt();
-
-			} else {
+				userInput();
+			
+			// detects if moving from across the board (ie 04 to 00 not allowed)
+			}else if( Math.abs(toR-fromR) > 1 || Math.abs(toC-fromC) > 1  ){
+				System.out.println("Woah there! ");
+				System.out.println("Can't move across the board");
+				userInput();
+			}
+			
+			
+			
+			else {
 				canMove = true;
 			}
 		}
@@ -279,7 +288,7 @@ public class candyCrisis {
 
 		if (board[0][0] == board[2][0] && board[0][1] == board[2][1] && board[0][2] == board[2][2]
 				&& board[0][3] == board[2][3] && board[0][4] == board[2][1]) {
-
+			System.out.println("Done a puzzle!");
 			final long endTime = System.currentTimeMillis();
 			pw.println();
 			pw.println("Time: " + (endTime - startTime));
@@ -288,8 +297,8 @@ public class candyCrisis {
 
 			if (loadToBoard(b.readLine())) {
 
-				// loadToBoard(b.readLine());
-				// System.out.println("Next puzzle is: " +b.readLine());
+				System.out.println("Next puzzle!");
+				
 				printBoard();
 				makeMove();
 
