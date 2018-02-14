@@ -1,2 +1,5 @@
-e b r r b r e e e e r b r r b
-e b r r b e e e e r r b r r b
+e b b b w r r r r w b b r b r
+e b w r r b r b r b r b w b r
+e b r r r w r r b b r w b b b
+e r r r w b b r b r b b b w r
+e r b r b b r b w b w b r r r
