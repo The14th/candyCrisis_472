@@ -1,6 +1,0 @@
-F
-Time: 12114
-Number of moves: 1
-JIHGF
-Time: 22411
-Number of moves: 5

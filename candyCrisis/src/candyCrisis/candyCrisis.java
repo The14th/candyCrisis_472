@@ -7,21 +7,26 @@ import javax.swing.plaf.synth.SynthSeparatorUI;
 
 public class candyCrisis {
 
+	//Initialize the board
 	char board[][] = new char[3][5];
 	Scanner k = new Scanner(System.in);
 	long startTime = System.currentTimeMillis();
-
+	
+	//Reading and writing to file
 	PrintWriter pw;
 	FileInputStream fis;
 	BufferedReader b;
 	
+	//Gets X and Y value for user input
 	int fromR;
 	int fromC;
 	int toR;
 	int toC;
-
+	
+	//Counts the total steps to completion. A sum total
 	private int counter = 0;
 
+	//Get file ready to write too
 	public candyCrisis() {
 		try {
 			File file = new File("myfile.txt");
@@ -88,7 +93,7 @@ public class candyCrisis {
 		try {
 			b = new BufferedReader(new FileReader(fileName));
 			line = b.readLine();
-
+		
 			
 		}
 
@@ -98,18 +103,22 @@ public class candyCrisis {
 
 		
 		System.out.println("-------------------------------");
+		System.out.println(line);
 		return line;
 
 	}
 
 	public boolean loadToBoard(String line) {
-
+		
+		String tempLine = line;
+		
 		int i = 0;
 		if (line != null) {
+			tempLine = line.replaceAll("\\s+", "");
 			for (int row = 0; row < 3; row++) {
 				for (int col = 0; col < 5; col++) {
 
-					char current = line.charAt(i);
+					char current = tempLine.charAt(i);
 
 					board[row][col] = current;
 					i++;
@@ -293,7 +302,7 @@ public class candyCrisis {
 			pw.println();
 			pw.println("Time: " + (endTime - startTime));
 			pw.println("Number of moves: " + counter);
-			counter = 0;
+			//counter = 0;
 
 			if (loadToBoard(b.readLine())) {
 
