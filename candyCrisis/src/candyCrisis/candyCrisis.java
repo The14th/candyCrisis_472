@@ -103,7 +103,7 @@ public class candyCrisis {
 
 		
 		System.out.println("-------------------------------");
-		System.out.println(line);
+		//System.out.println(line);
 		return line;
 
 	}
@@ -296,7 +296,7 @@ public class candyCrisis {
 	public boolean gameOver() throws IOException {
 
 		if (board[0][0] == board[2][0] && board[0][1] == board[2][1] && board[0][2] == board[2][2]
-				&& board[0][3] == board[2][3] && board[0][4] == board[2][1]) {
+				&& board[0][3] == board[2][3] && board[0][4] == board[2][4]) {
 			System.out.println("Done a puzzle!");
 			final long endTime = System.currentTimeMillis();
 			pw.println();
