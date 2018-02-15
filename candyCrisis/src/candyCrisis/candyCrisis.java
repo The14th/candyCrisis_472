@@ -311,8 +311,7 @@ public class candyCrisis {
 			final long endTime = System.currentTimeMillis();
 			pw.println();
 			pw.println("Time: " + (endTime - startTime));
-			pw.println("Number of moves: " + counter);
-			//counter = 0;
+			
 
 			if (loadToBoard(b.readLine())) {
 
@@ -325,6 +324,7 @@ public class candyCrisis {
 			}
 
 			else {
+				pw.println("Number of moves: " + counter);
 				System.out.println("Game Completed");
 				pw.println("Game done");
 				pw.println("-----------------------");
