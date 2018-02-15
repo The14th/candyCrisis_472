@@ -229,17 +229,27 @@ public class candyCrisis {
 		
 		boolean move = false;
 		do {
-			System.out.println("Enter number:");
+			//System.out.println("Enter number:");
+			System.out.println("Coordinates of peice to move first and then new position");
+			System.out.print("ROW from:");
 			while (!k.hasNextInt()) {
 				String input = k.next();
 				System.out.println(input + " not a number");
 				System.out.println("Enter number:");
 
 			}
+			//System.out.print("ROW from:");
+			
 			fromR = k.nextInt();
+			System.out.print("COLUMN from:");
 			fromC = k.nextInt();
+			
+			System.out.print("ROW to:");
 			toR = k.nextInt();
+			
+			System.out.print("COLUMN to:");
 			toC = k.nextInt();
+			
 			move = true;
 		} while (!move);
 	}

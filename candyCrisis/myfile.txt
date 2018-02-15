@@ -1,0 +1,9 @@
+F
+Time: 8794
+Number of moves: 1
+JIHGF
+Time: 27557
+Number of moves: 6
+Game done
+-----------------------
+New Game
