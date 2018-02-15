@@ -29,7 +29,7 @@ public class candyCrisis {
 	//Get file ready to write too
 	public candyCrisis() {
 		try {
-			File file = new File("myfile.txt");
+			File file = new File("output.txt");
 
 			FileWriter fw = new FileWriter(file, true);
 			BufferedWriter bw = new BufferedWriter(fw);
