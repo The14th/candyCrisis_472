@@ -316,6 +316,9 @@ public class candyCrisis {
 
 			else {
 				System.out.println("Game Completed");
+				pw.println("Game done");
+				pw.println("-----------------------");
+				pw.println("New Game");
 				pw.close();
 				System.exit(0);
 			}
